@@ -12,7 +12,12 @@ set(CMAKE_AUTOMOC ON)
 find_package(Qt6 REQUIRED COMPONENTS Core)
 
 
-add_library(mcpqt_example_plugin MODULE src/example_plugin.cpp src/plugin.cpp)
+add_library(mcpqt_example_plugin MODULE
+    src/example_plugin.cpp
+    src/plugin.cpp
+    src/bm25/bm25.cpp
+    src/bm25/bm25.h
+)
 set_target_properties(mcpqt_example_plugin PROPERTIES PREFIX "")
 target_link_libraries(mcpqt_example_plugin PRIVATE Qt6::Core)
 
