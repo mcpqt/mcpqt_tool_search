@@ -1,0 +1,44 @@
+{
+  "Tools": {
+    "QVariant ToolSearchPlugin::search(QString,QString)": {
+      "name": "tool_search",
+      "title": "Search tools",
+      "description": "Search for available tools by name, description, or capability using BM25 ranking. Use this when you need to discover tools that can help with a task. Query with capability keywords rather than raw arguments, for example \"list files\" or \"find issues\".",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Search query made of capability keywords or a short phrase."
+          },
+          "category": {
+            "type": "string",
+            "enum": ["all", "builtin", "mcp", "plugin"],
+            "description": "Optional source filter for the results."
+          }
+        },
+        "required": ["query"]
+      }
+    },
+    "QVariant ToolSearchPlugin::searchRegex(QString,QString)": {
+      "name": "tool_search_regex",
+      "title": "Search tools with regex",
+      "description": "Search for available tools by matching a case-insensitive regular expression against tool names and descriptions. Use this when you know a specific naming pattern or capability. Examples: \"github.*issue\", \"^get\", \"file|directory\".",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "pattern": {
+            "type": "string",
+            "description": "Case-insensitive regular expression matched against tool names and descriptions."
+          },
+          "category": {
+            "type": "string",
+            "enum": ["all", "builtin", "mcp", "plugin"],
+            "description": "Optional source filter for the results."
+          }
+        },
+        "required": ["pattern"]
+      }
+    }
+  }
+}
